@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.kvrl.engn": "file:../../KVRLEngine/Assets/com.KVRL.KVRLENGINE",
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.feature.development": "1.0.2",
     "com.unity.feature.vr": "1.0.0",

@@ -1,0 +1,45 @@
+{
+    "name": "AkiraActionMap",
+    "maps": [
+        {
+            "name": "MotorCycle",
+            "id": "99e72bb1-2145-472f-a5e0-b7cf628a32b0",
+            "actions": [
+                {
+                    "name": "DebugMoveHorizontal",
+                    "type": "Value",
+                    "id": "e5d6fca7-4616-42b4-8fdf-e5b50e0c4f50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2744d6e0-85c1-4201-90df-91de640164cd",
+                    "path": "<Keyboard>/#(A)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugMoveHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6369ca29-2401-4944-8e28-80280b90f830",
+                    "path": "<Keyboard>/#(D)",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "DebugMoveHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
