@@ -4,27 +4,29 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class BikeController : MonoBehaviour
 {
-    public SplineFollower currentSplineF;
     public float horizontalMovementSpeed = 1f;
     public InputActionAsset inputMap;
     private InputAction horizontalMovementAction;
+    public BikeSplineMovement movementController;
+    public float hInput;
     public void MoveHorizontally(float input )
-    {
-        if(currentSplineF)
-        {
+    {        
             Debug.Log(input);
-            
-                currentSplineF.Offset.x = input * horizontalMovementSpeed;
-            
+        if (movementController)
+        {
+            movementController.Offset.x = input*horizontalMovementSpeed;
         }
+        hInput = input;
+
     }
+    
     // Start is called before the first frame update
     void Start()
     {
         if(inputMap!=null)
         {
            horizontalMovementAction= inputMap.FindAction("DebugMoveHorizontal");
-
+            
            
         }
     }

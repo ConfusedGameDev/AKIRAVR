@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Splines;
 
+[ExecuteAlways]
 public class SplineFollower : SplineComponent
 {
         /// <summary>

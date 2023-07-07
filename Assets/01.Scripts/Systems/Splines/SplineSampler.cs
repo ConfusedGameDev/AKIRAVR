@@ -36,14 +36,14 @@ public class SplineSampler : MonoBehaviour
     public int resolution = 10;
     public float debugSphereSize = 0.25f;
 
-     
+    public bool debug;
     // Update is called once per frame
     void Update()
     {
          
         samples.Clear();
 
-
+        if (!splineContainer) return;
         for (int i = 0; i < resolution; i++)
         {
             float3 position, tangent, upVector;
@@ -52,6 +52,9 @@ public class SplineSampler : MonoBehaviour
             float3 right = Vector3.Cross(tangent, upVector).normalized * maxWidth / 2f;
             p1 = position + (right * maxWidth / 2f);
             p2 = position + (-right * maxWidth / 2f);
+            position.y = 0;
+            p1.y = 0;
+            p2.y = 0;
             samples.Add(new SamplePosition(position, p1, p2));
 
         }
@@ -60,6 +63,7 @@ public class SplineSampler : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        if (!debug) return;
         foreach (var sample in samples)
         {
             Gizmos.color = Color.white;
