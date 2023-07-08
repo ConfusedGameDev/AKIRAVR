@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class BikeController : MonoBehaviour
 {
-    public float horizontalMovementSpeed = 1f;
+    public float maxHorizonzalOffset = 1f;
+    public float horizontalSpeed=0.1f;
     public InputActionAsset inputMap;
     private InputAction horizontalMovementAction;
     public BikeSplineMovement movementController;
@@ -14,7 +15,11 @@ public class BikeController : MonoBehaviour
             Debug.Log(input);
         if (movementController)
         {
-            movementController.Offset.x = input*horizontalMovementSpeed;
+            var nextOffset = movementController.Offset.x+ input*horizontalSpeed;
+            if (Mathf.Abs(nextOffset) < Mathf.Abs(maxHorizonzalOffset))
+                movementController.Offset.x = nextOffset;
+
+
         }
         hInput = input;
 

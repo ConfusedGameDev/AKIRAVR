@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "DebugMoveVertical",
+                    "type": "Value",
+                    "id": "f2566de8-1b0e-4331-9110-9ae8d40820b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -35,6 +44,28 @@
                     "processors": "Invert",
                     "groups": "",
                     "action": "DebugMoveHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "629bf0b0-d299-4b57-afd6-d396b43474da",
+                    "path": "<Keyboard>/#(A)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugMoveVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d94fbc0c-91c6-4d4a-956c-f34b2aa5a90c",
+                    "path": "<Keyboard>/#(D)",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "DebugMoveVertical",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
