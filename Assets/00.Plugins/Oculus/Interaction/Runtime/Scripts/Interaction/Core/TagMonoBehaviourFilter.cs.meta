@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 53f77afe510aecd498784137cc49071e
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Runtime/Scripts/Interaction/Core/TagMonoBehaviourFilter.cs
+  uploadId: 535097
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

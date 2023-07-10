@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 86ea3743a20e5ab4e92a386ca55ce8ed
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Runtime/Scripts/Interaction/Core/IMonoBehaviourFilter.cs
+  uploadId: 535097
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

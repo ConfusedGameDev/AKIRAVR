@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: a835ac24fc2cad9439407885825362d2
+labels:
+- material
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Samples/Objects/Environment/MRDesk/Materials/MRDeskMat.mat
+  uploadId: 535097
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

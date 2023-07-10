@@ -50,7 +50,7 @@
                 {
                     "name": "",
                     "id": "629bf0b0-d299-4b57-afd6-d396b43474da",
-                    "path": "<Keyboard>/#(A)",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -61,9 +61,20 @@
                 {
                     "name": "",
                     "id": "d94fbc0c-91c6-4d4a-956c-f34b2aa5a90c",
-                    "path": "<Keyboard>/#(D)",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "Invert",
+                    "groups": "",
+                    "action": "DebugMoveVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "625529eb-1f96-4a90-9be3-5d7e92b364ce",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
                     "action": "DebugMoveVertical",
                     "isComposite": false,

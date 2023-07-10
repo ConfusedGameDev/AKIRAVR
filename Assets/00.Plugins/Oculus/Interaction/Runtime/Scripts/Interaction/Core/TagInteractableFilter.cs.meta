@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ac65870873ce0dc41bed51aad4ce3be6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Runtime/Scripts/Interaction/Core/TagInteractableFilter.cs
+  uploadId: 535097
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

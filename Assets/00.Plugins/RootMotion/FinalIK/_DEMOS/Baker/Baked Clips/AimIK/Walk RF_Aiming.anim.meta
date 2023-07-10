@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2653b06c3cad957408a9f42eaae5231f
+labels:
+- animationClip
+AssetOrigin:
+  serializedVersion: 1
+  productId: 14290
+  packageName: Final IK
+  packageVersion: 2.2
+  assetPath: Assets/Plugins/RootMotion/FinalIK/_DEMOS/Baker/Baked Clips/AimIK/Walk
+    RF_Aiming.anim
+  uploadId: 542079
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f8ce3b3f786c145e397f3c275f706895
+labels:
+- material
+AssetOrigin:
+  serializedVersion: 1
+  productId: 14290
+  packageName: Final IK
+  packageVersion: 2.2
+  assetPath: Assets/Plugins/RootMotion/Shared Demo Assets/Prototyping/Materials/Prototype
+    Red Smooth.mat
+  uploadId: 542079
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

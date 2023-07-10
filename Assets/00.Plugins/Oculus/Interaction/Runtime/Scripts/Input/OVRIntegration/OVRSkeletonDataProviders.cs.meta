@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d7c5f4b808f69a948bfae3886f8b9f4d
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Runtime/Scripts/Input/OVRIntegration/OVRSkeletonDataProviders.cs
+  uploadId: 535097
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

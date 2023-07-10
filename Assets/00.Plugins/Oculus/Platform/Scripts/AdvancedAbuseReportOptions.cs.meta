@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 76b4638d04dfc3b4997724e42ac4c964
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Scripts/AdvancedAbuseReportOptions.cs
+  uploadId: 535097

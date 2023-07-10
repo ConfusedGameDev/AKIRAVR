@@ -6,6 +6,16 @@
       "source": "local",
       "dependencies": {}
     },
+    "com.unity.animation.rigging": {
+      "version": "1.2.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.burst": "1.4.1",
+        "com.unity.test-framework": "1.1.24"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.burst": {
       "version": "1.8.7",
       "depth": 1,
@@ -78,7 +88,7 @@
     },
     "com.unity.inputsystem": {
       "version": "1.6.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
@@ -250,6 +260,15 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "com.unity.visualeffectgraph": {
+      "version": "15.0.6",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.shadergraph": "15.0.6",
+        "com.unity.render-pipelines.core": "15.0.6"
+      }
+    },
     "com.unity.visualscripting": {
       "version": "1.8.0",
       "depth": 0,
@@ -262,7 +281,7 @@
     },
     "com.unity.xr.core-utils": {
       "version": "2.2.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.xr": "1.0.0"
@@ -302,7 +321,7 @@
     },
     "com.unity.xr.openxr": {
       "version": "1.8.1",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.management": "4.0.1",

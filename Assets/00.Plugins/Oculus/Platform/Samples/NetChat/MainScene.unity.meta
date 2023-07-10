@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4a5c060329791374cba1196f7ac36ef5
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Samples/NetChat/MainScene.unity
+  uploadId: 535097

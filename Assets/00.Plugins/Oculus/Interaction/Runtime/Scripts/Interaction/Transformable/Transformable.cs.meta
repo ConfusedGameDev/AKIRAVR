@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9875aa5b185d36245ae0966e34e5bed1
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Runtime/Scripts/Interaction/Transformable/Transformable.cs
+  uploadId: 535097
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2b284c020c8beaf44963874173eca41b
+labels:
+- animationClip
+AssetOrigin:
+  serializedVersion: 1
+  productId: 14290
+  packageName: Final IK
+  packageVersion: 2.2
+  assetPath: Assets/Plugins/RootMotion/FinalIK/_DEMOS/Baker/Baked Clips/AimIK/Idle_Aiming.anim
+  uploadId: 542079
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

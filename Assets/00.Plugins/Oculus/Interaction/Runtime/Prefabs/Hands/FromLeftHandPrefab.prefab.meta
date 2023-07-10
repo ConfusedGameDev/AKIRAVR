@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bf40bb80d130145429b3589de445204b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Runtime/Prefabs/Hands/FromLeftHandPrefab.prefab
+  uploadId: 535097

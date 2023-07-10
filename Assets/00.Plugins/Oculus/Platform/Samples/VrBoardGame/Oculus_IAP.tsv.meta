@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0b687b4832314b24db66e56bef4de820
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Samples/VrBoardGame/Oculus_IAP.tsv
+  uploadId: 535097

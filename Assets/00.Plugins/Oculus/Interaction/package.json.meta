@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1498e95addf72f0419eee02b055c9cef
+PackageManifestImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/package.json
+  uploadId: 535097

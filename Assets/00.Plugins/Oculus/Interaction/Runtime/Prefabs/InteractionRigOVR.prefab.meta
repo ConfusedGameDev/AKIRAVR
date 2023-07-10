@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ffe3be6b11cb93446bff4c254b6d9148
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Runtime/Prefabs/InteractionRigOVR.prefab
+  uploadId: 535097

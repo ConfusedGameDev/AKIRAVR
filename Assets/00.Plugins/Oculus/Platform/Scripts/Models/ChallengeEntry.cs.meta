@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7b792eb3b7aabfd46b55f591eb3a9435
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Scripts/Models/ChallengeEntry.cs
+  uploadId: 535097

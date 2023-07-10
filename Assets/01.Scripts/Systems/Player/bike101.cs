@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class bike101 : MonoBehaviour
 {
@@ -12,11 +13,24 @@ public class bike101 : MonoBehaviour
 
     public float motorTorque, brakeTorque;
     public Vector3 input;//X Horizontal Movement Y Vertical Movement Z Brake
+    public InputActionAsset inputMap;
+    private InputAction horizontalMovementAction;
+    private InputAction VertiaclMovementAction;
     //puStart is called before the first frame update
     public float maxSteerAngle = 30;
     public Transform cameraController;
+    public Transform rotZController;
+    public Transform leftHandT, rightHandT, bikeroationController;
+    public float handAngle;
     void Start()
     {
+        if (inputMap != null)
+        {
+            horizontalMovementAction = inputMap.FindAction("DebugMoveHorizontal");
+            VertiaclMovementAction = inputMap.FindAction("DebugMoveVertical");
+
+
+        }
         rb = GetComponent<Rigidbody>();
 
         if(!rb ||! frontWheelC || !backWheelC)
@@ -26,6 +40,7 @@ public class bike101 : MonoBehaviour
             Debug.LogError("No wheel Colliders or Rigidbody Found ");
             Destroy(this);
         }
+        frontWheelC.ConfigureVehicleSubsteps(5, 12, 15);
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;
     }
 
@@ -46,8 +61,12 @@ public class bike101 : MonoBehaviour
 
     }
     //TODO-> replace for unity Actions
-    public Vector3 GetInput() => new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 
-        Input.GetKeyDown(KeyCode.Space) ? 1 : 0);
+    public Vector3 GetInput()
+    {
+        return new Vector3(horizontalMovementAction!=null? horizontalMovementAction.ReadValue<float>(): Input.GetAxis("Horizontal"),
+                           VertiaclMovementAction != null ? VertiaclMovementAction.ReadValue<float>(): Input.GetAxis("Vertical"),
+                            Input.GetKeyDown(KeyCode.Space) ? 1 : 0);
+    }
 
     //Only Back tire 
     public void UpdateEngine()
@@ -56,19 +75,32 @@ public class bike101 : MonoBehaviour
         frontWheelC.brakeTorque = input.z*brakeTorque;
         backWheelC.brakeTorque = input.z*brakeTorque;
     }
-
+    public float XRSteering;
     public void UpdateSteering()    
     {
-        frontWheelC.steerAngle = input.x * maxSteerAngle;
+        XRSteering = (bikeroationController ? ((bikeroationController.rotation.eulerAngles.z > 180.0f )? 
+                                                    bikeroationController.rotation.eulerAngles.z - 360 : bikeroationController.rotation.eulerAngles.z) / 50f :0);
+        frontWheelC.steerAngle = -XRSteering * maxSteerAngle;
         
     }
-
+    public float rotz;
     public void CorrectRotationZ()
     {
         var currentRotation=transform.rotation;
-        currentRotation.z = 0;
-        transform.rotation = currentRotation;
+        currentRotation = Quaternion.Euler(currentRotation.eulerAngles.x,
+            currentRotation.eulerAngles.y, 0);
+        //rotZController ? rotz*rotZController.rotation.eulerAngles.z : 0);
+
+        
+         transform.rotation = currentRotation;
+        if (leftHandT && rightHandT)
+        {
+            var target = rightHandT.position - leftHandT.position;
+            handAngle = Vector3.Angle(target, leftHandT.forward);
+        }
+ 
     }
+    
 
 
 

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f2737aa2c60f3d742a4c86dbacbd566d
+labels:
+- material
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173167
+  packageName: Shapes
+  packageVersion: 4.2.1
+  assetPath: Assets/Shapes/Shaders/Generated Materials/Disc Additive [INNER_RADIUS].mat
+  uploadId: 521140
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

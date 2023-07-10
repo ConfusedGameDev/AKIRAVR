@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ad1b5e10753c7b74bb447fd530236c09
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Scripts/MultiplayerErrorErrorKey.cs
+  uploadId: 535097

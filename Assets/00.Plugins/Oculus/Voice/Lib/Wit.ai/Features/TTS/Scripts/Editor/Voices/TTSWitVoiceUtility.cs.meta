@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ca11f6ef3c756c64dbbf6d74fdd4c954
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Voice/Lib/Wit.ai/Features/TTS/Scripts/Editor/Voices/TTSWitVoiceUtility.cs
+  uploadId: 535097

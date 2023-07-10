@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 07d52870abb2972488970771fb159cc4
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Voice/Lib/Wit.ai/Lib/LitJson/Runtime/Facebook.Wit.LitJson.asmdef
+  uploadId: 535097

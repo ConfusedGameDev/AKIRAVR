@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 999a7ac090d2079498d0308044745a44
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Editor/Poke/BoxProximityFieldEditor.cs
+  uploadId: 535097

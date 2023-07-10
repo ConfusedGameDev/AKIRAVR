@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fbdb46efded3719458a17f55fe1ec7cd
+timeCreated: 1473867148
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Samples/VrVoiceChat/Prefabs/SelectFriendButton.prefab
+  uploadId: 535097

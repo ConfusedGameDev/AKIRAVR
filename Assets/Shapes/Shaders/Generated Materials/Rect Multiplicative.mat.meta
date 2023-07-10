@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 1119202d6e4a9f945abe9ec91a46ec7b
+labels:
+- material
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173167
+  packageName: Shapes
+  packageVersion: 4.2.1
+  assetPath: Assets/Shapes/Shaders/Generated Materials/Rect Multiplicative.mat
+  uploadId: 521140
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

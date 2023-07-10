@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a3c974875a2ea724e93b6e5114bca96f
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Samples/VrHoops/Readme.md
+  uploadId: 535097

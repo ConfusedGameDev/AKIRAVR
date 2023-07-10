@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: bb77b79dc85df724f854f8ff109e035e
+labels:
+- material
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173167
+  packageName: Shapes
+  packageVersion: 4.2.1
+  assetPath: Assets/Shapes/Shaders/Generated Materials/Polyline 2D Subtractive [IS_JOIN_MESH][JOIN_BEVEL].mat
+  uploadId: 521140
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

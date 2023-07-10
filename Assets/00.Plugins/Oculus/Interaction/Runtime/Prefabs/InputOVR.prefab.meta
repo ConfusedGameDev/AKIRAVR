@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 79afd2227c07813448bc8aa5f9d37d7a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Runtime/Prefabs/InputOVR.prefab
+  uploadId: 535097
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 5e53c7a8c2e563c4c90a8fa620eebc2c
+labels:
+- material
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/SampleFramework/Core/Locomotion/Materials/ColumnGlow.mat
+  uploadId: 535097
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

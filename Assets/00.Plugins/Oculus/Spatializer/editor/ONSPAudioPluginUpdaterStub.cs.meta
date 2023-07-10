@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a290ebcc3564c9a49a56a756e13be43e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Spatializer/editor/ONSPAudioPluginUpdaterStub.cs
+  uploadId: 535097

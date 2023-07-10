@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: ff6228692444b254cae1a99d4c15d216
+labels:
+- material
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Samples/ThirdParty/GradientSkybox/Skybox_ThreeColorGradient.mat
+  uploadId: 535097
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7a70f2891db98a544950d6c15fb567f2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/VR/Scripts/Util/OVRMeshGenerator.cs
+  uploadId: 535097

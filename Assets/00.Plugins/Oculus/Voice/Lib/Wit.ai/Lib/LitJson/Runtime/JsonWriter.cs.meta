@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 23a320519f005e24a92faee6719e4193
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Voice/Lib/Wit.ai/Lib/LitJson/Runtime/JsonWriter.cs
+  uploadId: 535097

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5661873a4cd8ad8469c072d3852197c2
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Interaction/Samples/Scenes/BasicPoseDetection.unity
+  uploadId: 535097
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

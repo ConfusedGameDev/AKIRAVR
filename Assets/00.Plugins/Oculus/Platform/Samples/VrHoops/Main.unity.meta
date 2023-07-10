@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8b67239c8d8693441abb62a2ac48f571
+timeCreated: 1474427891
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Samples/VrHoops/Main.unity
+  uploadId: 535097

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 48e6308f93e461340abb975251ae824b
+timeCreated: 1480479889
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration
+  packageVersion: 46.0
+  assetPath: Assets/Oculus/Platform/Samples/VrBoardGame/Prefabs/PieceA.prefab
+  uploadId: 535097
