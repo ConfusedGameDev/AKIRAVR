@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3ebd22c4bcb64454ca6fba89e23cd8eb
+labels:
+- material
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173167
+  packageName: Shapes
+  packageVersion: 4.2.1
+  assetPath: Assets/Shapes/Shaders/Generated Materials/Polyline 2D Multiplicative
+    [JOIN_BEVEL].mat
+  uploadId: 521140
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
