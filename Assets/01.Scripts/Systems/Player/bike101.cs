@@ -22,6 +22,8 @@ public class bike101 : MonoBehaviour
     public Transform rotZController;
     public Transform leftHandT, rightHandT, bikeroationController;
     public float handAngle;
+    public UIController uiController;
+    public float maxSpeed=40f;
     void Start()
     {
         if (inputMap != null)
@@ -58,6 +60,11 @@ public class bike101 : MonoBehaviour
         //Update Z-Axis Rotation
         CorrectRotationZ();
         //push down The Bike
+        if (uiController)
+        {
+            uiController.updateLineSpeed(rb.velocity.magnitude,maxSpeed);
+        }
+        
 
     }
     //TODO-> replace for unity Actions
