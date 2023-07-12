@@ -15,7 +15,7 @@ public class Interactablee : MonoBehaviour
     public float maxDistance = 0.5f;
 
     protected HandController currentHand;
-
+    public HandType compatibleHand;
     protected void Awake()
     {
         if (fakeHand)
@@ -24,6 +24,7 @@ public class Interactablee : MonoBehaviour
     //Implement Parent To Object
     public void ToggleFakeHand(bool toggle, HandController hand=null)
     {
+        
         if (!fakeHand) return;
             
         if (toggle )
@@ -39,6 +40,7 @@ public class Interactablee : MonoBehaviour
     }
     public virtual void Grab(HandController newHand)
     {
+        if (compatibleHand != HandType.Both && newHand && newHand.handT != compatibleHand) return;
         currentHand = newHand;
         isGrabbed = true;
         fakeHand.SetActive(true);

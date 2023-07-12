@@ -3,8 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum HandType
+{
+    Left,
+    Right,
+    Both
+}
 public class HandController : MonoBehaviour
 {
+    public HandType handT;
     public Interactablee currentInteractable;
     public GameObject handMesh;
 
@@ -16,9 +24,12 @@ public class HandController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        
         Interactablee newInteractable;
         if (other.TryGetComponent<Interactablee>(out newInteractable))
         {
+            if (!currentInteractable)
+                PlayerInputHandler.Instance.RumbleHand(this);
             if (!currentInteractable || !currentInteractable.isGrabbed)
             {
                 if(currentInteractable && !currentInteractable.isGrabbed && newInteractable!= currentInteractable)

@@ -61,12 +61,10 @@ public class bike101 : MonoBehaviour
         UpdateEngine();
 
         //Update Steering
-        if (rightHandle && leftHandle && rightHandle.isGrabbed && leftHandle.isGrabbed)
-        {
-            if (zRotationHandler)
-                zRotationHandler.automatic = true;
+         if (zRotationHandler)
+                zRotationHandler.automatic = (rightHandle && leftHandle && rightHandle.isGrabbed && leftHandle.isGrabbed);
             UpdateSteering();
-        }
+        
 
         
         //push down The Bike
