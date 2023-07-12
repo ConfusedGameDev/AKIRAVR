@@ -13,13 +13,22 @@ public class Interactablee : MonoBehaviour
     public bool isDistancedBased;
     [ShowIf("isDistancedBased")]
     public float maxDistance = 0.5f;
-    public void ToggleFakeHand(bool toggle)
+
+    protected HandController currentHand;
+
+    protected void Awake()
+    {
+        if (fakeHand)
+            fakeHand.SetActive(false);
+    }
+    //Implement Parent To Object
+    public void ToggleFakeHand(bool toggle, HandController hand=null)
     {
         if (!fakeHand) return;
             
         if (toggle )
         {
-            Grab();
+            Grab(hand);
           
         }
         else if(!toggle)
@@ -28,17 +37,19 @@ public class Interactablee : MonoBehaviour
         }
 
     }
-    public void Grab()
+    public virtual void Grab(HandController newHand)
     {
+        currentHand = newHand;
         isGrabbed = true;
         fakeHand.SetActive(true);
     }
-    public void Release()
+    public virtual void Release()
     {
+        currentHand = null;
         isGrabbed = false;
         fakeHand.SetActive(false);
     }
-         
+    
     void Start()
     {
         

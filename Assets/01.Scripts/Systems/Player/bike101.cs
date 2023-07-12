@@ -1,3 +1,4 @@
+using KVRL.KVRLENGINE.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,9 @@ public class bike101 : MonoBehaviour
     public float handAngle;
     public UIController uiController;
     public float maxSpeed=40f;
+
+    public Interactablee leftHandle, rightHandle;
+    public FollowObject zRotationHandler;
     void Start()
     {
         if (inputMap != null)
@@ -44,6 +48,8 @@ public class bike101 : MonoBehaviour
         }
         frontWheelC.ConfigureVehicleSubsteps(5, 12, 15);
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+        if(zRotationHandler)
+        zRotationHandler.automatic = false;
     }
 
     //Run Logic On the Fixed Update cause it is a Physics Based Vehicle
@@ -55,10 +61,14 @@ public class bike101 : MonoBehaviour
         UpdateEngine();
 
         //Update Steering
-        UpdateSteering();
+        if (rightHandle && leftHandle && rightHandle.isGrabbed && leftHandle.isGrabbed)
+        {
+            if (zRotationHandler)
+                zRotationHandler.automatic = true;
+            UpdateSteering();
+        }
 
-        //Update Z-Axis Rotation
-        CorrectRotationZ();
+        
         //push down The Bike
         if (uiController)
         {
@@ -88,6 +98,7 @@ public class bike101 : MonoBehaviour
         XRSteering = (bikeroationController ? ((bikeroationController.rotation.eulerAngles.z > 180.0f )? 
                                                     bikeroationController.rotation.eulerAngles.z - 360 : bikeroationController.rotation.eulerAngles.z) / 50f :0);
         frontWheelC.steerAngle = -XRSteering * maxSteerAngle;
+        CorrectRotationZ();
         
     }
     public float rotz;

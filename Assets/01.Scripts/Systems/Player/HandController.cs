@@ -30,7 +30,7 @@ public class HandController : MonoBehaviour
 
                 if (!currentInteractable.requireGrip)
                 {
-                    currentInteractable.ToggleFakeHand(true);
+                    currentInteractable.ToggleFakeHand(true,this);
                     handMesh.SetActive(false);
                 }
             }
@@ -53,12 +53,12 @@ public class HandController : MonoBehaviour
     }
     private void GrabInteractable()
     {
-        currentInteractable.ToggleFakeHand(true);
+        currentInteractable.ToggleFakeHand(true,this);
         handMesh.SetActive(false);
         
     }
 
-    // Update is called once per frame
+    // TODO add Vibration and USe VR Grip/Trigger
     void Update()
     {
         if (currentInteractable)
