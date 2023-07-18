@@ -24,7 +24,8 @@ public class PlayerInputHandler : SingletonComponent<PlayerInputHandler>
     [BoxGroup("Default Rumble Parameters")]
     [Tooltip("Defines The Duration of the rumble when no parameters are specified")]
     public float defaultDuration = 0.1f;
-    
+
+    public HandController leftHand, rightHand;
     public void RumbleHand(HandController hand, int times, float spacing)
     {
         StartCoroutine(RumbleHandPeriodically(hand, times, spacing));
