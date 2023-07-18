@@ -70,11 +70,7 @@ public class SplineMeshCreator : MonoBehaviour
             uvOffset += distance;
 
         }
-        if (trackEnd == sampler.samples.Count)
-        {
-            UVs.AddRange(new List<Vector2> { new Vector2(uvOffset, 0), new Vector2(uvOffset, 1) });
-
-        }
+        
         var extraTriangles = (sampler.splineContainer.Spline.Closed ? 6 : 0);
             triangles = new int[((verts.Length - 2) * 3) + extraTriangles];
             int x = 0;
@@ -110,8 +106,11 @@ public class SplineMeshCreator : MonoBehaviour
         mesh.name = "Track";
         mesh.vertices = verts;
         mesh.triangles = triangles;
+        
         mesh.uv = UVs.ToArray();
+        mesh.RecalculateNormals();
         mFilter.mesh = mesh;
+        
     }
 
     private void onSplineChanged()
