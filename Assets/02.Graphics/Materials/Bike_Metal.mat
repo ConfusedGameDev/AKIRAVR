@@ -21,19 +21,18 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bike_Metal
-  m_Shader: {fileID: 4800000, guid: 85664e93818b0c841b8794638789e4d2, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _NORMALMAP
-  m_InvalidKeywords:
-  - _AOMODE_OFF
-  - _TOONEMISSIONMODE_ADD
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -168,7 +167,7 @@ Material:
     - _ShadingNoiseStrength: 0.1
     - _SmoothNormalSharpness: 10
     - _SmoothObjectNormals: 0
-    - _Smoothness: 0.899
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -190,7 +189,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainTint: {r: 1, g: 1, b: 1, a: 1}
+    - _MainTint: {r: 0.46226418, g: 0, b: 0, a: 1}
     - _OutlineTint: {r: 0.502, g: 0.502, b: 0.502, a: 1}
     - _RimLightColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadowTint: {r: 1, g: 1, b: 1, a: 1}
