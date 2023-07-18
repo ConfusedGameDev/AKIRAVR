@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class VRPushButton : Interactablee
 {
@@ -23,6 +24,10 @@ public class VRPushButton : Interactablee
     [FoldoutGroup("Constrains")]     
     public bool parentZ;
 
+    public UnityEvent onClick;
+
+    public AudioClip onClickSound;
+    public bool isMultiPress = true;
     public void Awake()
     {
         base.Awake();
@@ -39,6 +44,24 @@ public class VRPushButton : Interactablee
         base.Release();
         ResetPos();
     }
+    public void Click()
+    {
+        onClick?.Invoke();
+        if(currentHand)
+        {
+            currentHand.tryReleaseInteractable(this);
+        }
+        coolOffGrabability(3f);
+        if(audioPlayer && onClickSound)
+        {
+            audioPlayer.PlayOneShot(onClickSound);
+        }
+        if(!isMultiPress)
+        {
+            ToggleGrabability(false);
+        }
+        
+    }
     public void Update()
     {
         if(isGrabbed && currentHand)
@@ -53,6 +76,10 @@ public class VRPushButton : Interactablee
             transform.localPosition = new Vector3(parentX ? newPosition.x : transform.localPosition.x,
                                                   parentY ? newPosition.y : transform.localPosition.y,
                                                   parentZ ? newPosition.z : transform.localPosition.z);
+            if(parentZ && Mathf.Abs(transform.localPosition.z-endPosition.z)<0.1f)
+            {
+                Click();
+            }
         }
     }
 }

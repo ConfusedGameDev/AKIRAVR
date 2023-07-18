@@ -1,8 +1,9 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SpatialTracking;
 
 public enum HandType
 {
@@ -10,25 +11,46 @@ public enum HandType
     Right,
     Both
 }
+public enum UpdateMethod
+{
+    Update,
+    LateUpdate,
+    FixedUpdate
+}
 public class HandController : MonoBehaviour
 {
     public HandType handT;
     public Interactablee currentInteractable;
+    public HandBlocker currentHandBlocker;
     public GameObject handMesh;
 
     public float currentGrip = 0;
-    // Start is called before the first frame update
+
+    public UpdateMethod updateMethod;
+    public UnityEngine.SpatialTracking.TrackedPoseDriver handTracker; 
+
+    [Button]
     void Start()
     {
-        
+        handTracker = GetComponent< UnityEngine.SpatialTracking.TrackedPoseDriver >();
     }
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (currentHandBlocker) return;
+        HandBlocker hb;
+        if (other.TryGetComponent<HandBlocker>(out hb))
+        {
+            currentHandBlocker = hb;
+            if (handTracker) 
+                handTracker.trackingType = TrackedPoseDriver.TrackingType.RotationOnly;
+            return; 
+
+        }
         Interactablee newInteractable;
         if (other.TryGetComponent<Interactablee>(out newInteractable))
         {
-            if (!currentInteractable)
+            if (!newInteractable.canBeGrabbed) return;
+            if (newInteractable.rumbleOnTouch)
                 PlayerInputHandler.Instance.RumbleHand(this);
             if (!currentInteractable || !currentInteractable.isGrabbed)
             {
@@ -47,8 +69,29 @@ public class HandController : MonoBehaviour
             }
         }
     }
+
+    internal void tryReleaseInteractable(Interactablee interactable)
+    {
+        if (currentInteractable == interactable)
+            ReleaseInteractable();
+    }
+
     private void OnTriggerExit(Collider other)
     {
+        if(currentHandBlocker)
+        {
+            HandBlocker hb; 
+            if(other.TryGetComponent<HandBlocker>(out hb))
+            {
+                if(currentHandBlocker == hb)
+                {
+                    currentHandBlocker.CoolOff();
+                    currentHandBlocker = null;
+                    if (handTracker)
+                        handTracker.trackingType = TrackedPoseDriver.TrackingType.RotationAndPosition;
+                }
+            }
+        }
         Interactablee newInteractable;
         if (currentInteractable && !currentInteractable.isDistancedBased && !currentInteractable.requireGrip  && other.TryGetComponent<Interactablee>(out newInteractable))
         {
@@ -72,13 +115,29 @@ public class HandController : MonoBehaviour
     // TODO add Vibration and USe VR Grip/Trigger
     void Update()
     {
+        if(updateMethod== UpdateMethod.Update)
+        checkState();
+    }
+    private void FixedUpdate()
+    {
+        if (updateMethod == UpdateMethod.FixedUpdate)
+            checkState();
+    }
+    private void LateUpdate()
+    {
+        if (updateMethod == UpdateMethod.LateUpdate)
+            checkState();
+    }
+
+    private void checkState()
+    {
         if (currentInteractable)
         {
             if (currentInteractable.isGrabbed)
             {
                 CheckForRelease();
             }
-            else if(currentInteractable.requireGrip)
+            else if (currentInteractable.requireGrip)
             {
                 CheckForGrab(currentGrip);
             }
