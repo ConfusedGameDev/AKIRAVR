@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BicycleVehicle : MonoBehaviour
+public class BikeVehicle : MonoBehaviour
 {
 	float horizontalInput;
 	float vereticallInput;
@@ -11,10 +11,11 @@ public class BicycleVehicle : MonoBehaviour
 	public Transform handle;
 	bool braking;
 	Rigidbody rb;
-
+	public float remainingGas = 100f;
 	public Vector3 COG;
 
 	[SerializeField] float motorforce;
+	private float oldMotorForce;
 	[SerializeField] float brakeForce;
 	float currentbrakeForce;
 
@@ -27,7 +28,10 @@ public class BicycleVehicle : MonoBehaviour
 	[SerializeField]float maxlayingAngle = 45f;
 	public float targetlayingAngle;
 	[Range(-40, 40)]public float layingammount;
-	[Range(0.000001f, 1 )] [SerializeField] float leanSmoothing;
+
+	
+
+    [Range(0.000001f, 1 )] [SerializeField] float leanSmoothing;
 
 	[SerializeField] WheelCollider frontWheel;
 	[SerializeField] WheelCollider backWheel;
@@ -37,18 +41,66 @@ public class BicycleVehicle : MonoBehaviour
 
 	[SerializeField] TrailRenderer fronttrail;
 	[SerializeField] TrailRenderer rearttrail;
+  
 
-	public bool frontGrounded;
+    public bool frontGrounded;
 	public bool rearGrounded;
 
 	public bool isAiControlled;
 	public Transform nextTarget;
 	public float minDist, currentDist;
-	
-	public void UpdateInput(float gas, float steer)
+	bool isSpeedingUp;
+	public float gasSpeed = 0.005f;
+    public float minTargetDistance = 20f;
+    public Transform target;
+    internal void applyPowerup(Pickup pickUpData, PickupType typePickup)
+	{
+		switch (typePickup)
+		{
+			case PickupType.Speedup:
+				if (!isSpeedingUp)
+					StartCoroutine(temporarySpeedUP(pickUpData.value));
+				break;
+			case PickupType.GasUp:
+				UpdateGas(pickUpData.value);
+				break;
+		}
+	}
+	IEnumerator temporarySpeedUP(float amount)
+    {
+		float oldMotorForce = motorforce;
+		motorforce *= amount;
+		yield return new WaitForSeconds(5f);
+		motorforce = oldMotorForce;
+    }
+	public void DisableMotor()
+    {
+		if(motorforce!=0)
+		oldMotorForce = motorforce;
+		motorforce = 0;
+		vereticallInput = 0;
+    }
+	public void EnableMotor()
+    {
+		motorforce = oldMotorForce;
+    }
+	public void ResetBike()
+    {
+		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+		var newPos=  WaypointController.Instance.getClosestWaypoint(transform);
+		transform.position = newPos.position;
+		transform.rotation = newPos.rotation;
+
+    }
+    public void UpdateGas(float addition)
+    {
+        remainingGas += addition;
+    }
+    public void UpdateInput(float gas, float steer)
     {
 		if (isAiControlled) return;
-		Debug.Log($"gas {gas}  Steer{steer}");
+		 
 		//horizontalInput =  Input.GetAxis("Horizontal") ;
 		if (nextTarget && steer != 0)
         {
@@ -58,8 +110,10 @@ public class BicycleVehicle : MonoBehaviour
 			 
 			FakeSteering();
 		}
-		vereticallInput = gas + Input.GetAxis("Vertical"); 
+		var newGas = gas + Input.GetAxis("Vertical");
+		vereticallInput =   Mathf.Lerp(vereticallInput, newGas,gasSpeed); 
     }
+	public float getCurrentSpeed() => vereticallInput;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -89,6 +143,7 @@ public class BicycleVehicle : MonoBehaviour
 	//Get Horizontal(Handle) and vertical (gas) input
 	public void getAIInput()
     {
+		if (!target || Vector3.Distance(transform.position, target.position) > minTargetDistance) return;
         //horizontalInput = transform.InverseTransformPoint(nextTarget.position).x > transform.localPosition.x ? 1 : -1;  
         FakeSteering();
         vereticallInput = 0.5f;
