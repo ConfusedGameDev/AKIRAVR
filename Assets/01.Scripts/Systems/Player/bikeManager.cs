@@ -13,6 +13,7 @@ public class bikeManager : MonoBehaviour
      * ADd game over
      * add game win
      * add tutorial
+     * add Powerups
      */
 
     public List<NPCBike> npcBikes=new List<NPCBike>();
