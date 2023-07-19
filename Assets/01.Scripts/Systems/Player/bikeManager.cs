@@ -7,6 +7,13 @@ using UnityEngine.InputSystem;
 
 public class bikeManager : MonoBehaviour
 {
+    //TODO
+    /*
+     * Polish Rubber band System
+     * ADd game over
+     * add game win
+     * add tutorial
+     */
 
     public List<NPCBike> npcBikes=new List<NPCBike>();
     public NPCBike closestTarget;
@@ -31,7 +38,7 @@ public class bikeManager : MonoBehaviour
     public float maxAngle = 30;
     public float maxTorque = 500;
     public float maxHoverForce = 1f;
-    public BicycleVehicle bikeVehicle;
+    public BikeVehicle bikeVehicle;
     public float lastSteer = 0;
     [Range(0f, 1f)]
     public float steerSpeed = 0.05f;
@@ -41,34 +48,36 @@ public class bikeManager : MonoBehaviour
     public float steeringRange = 26f;
 
     public bool isBikeOn;
-    public float remainingGas = 100f;
+   
 
     public BikeSoundManager bikeSoundMG;
-    
+    public Renderer fadeSphere;
+    int fadeID = Shader.PropertyToID("_Alpha");
+    public float fadeSpeed = 1f;
+    bool isResseting;
+    Quaternion defaultRotZRotation;
+   
     void Start()
     {
         if (inputMap != null)
         {
             horizontalMovementAction = inputMap.FindAction("DebugMoveHorizontal");
             VertiaclMovementAction = inputMap.FindAction("DebugMoveVertical");
-
-
         }
-        
-       
-        if(zRotationHandler)
-        zRotationHandler.automatic = false;
+
+        if (zRotationHandler)
+        {
+            zRotationHandler.automatic = false;
+            defaultRotZRotation = zRotationHandler.transform.rotation;
+        }
         rightHandle.ToggleGrabability(false);
         leftHandle.ToggleGrabability(false);
-
         npcBikes.AddRange(FindObjectsByType<NPCBike>(FindObjectsSortMode.InstanceID));
-
     }
 
     [Button]
     public void StartBike()
     {
-
         bikeSoundMG.StartBike();
         isBikeOn = true;
         rightHandle.ToggleGrabability(true);
@@ -100,7 +109,8 @@ public class bikeManager : MonoBehaviour
         if (!isBikeOn)
             return;
 
-        remainingGas -= Time.deltaTime * gasDepletingSpeed;
+        if(!bikeVehicle.isAiControlled)
+        bikeVehicle.remainingGas -= Time.deltaTime * gasDepletingSpeed;
         closestTarget = getClosestEnemy();
         
         UpdateEngine();
@@ -108,8 +118,8 @@ public class bikeManager : MonoBehaviour
         
          if (uiController)
         {
-            uiController.updateSpeed((debugGas + input.y) * bikeVehicle.getMaxSpeed());
-            uiController.UpdateGas(remainingGas);
+            uiController.updateSpeed( bikeVehicle.getCurrentSpeed() * bikeVehicle.getMaxSpeed());
+            uiController.UpdateGas(bikeVehicle.remainingGas);
             if (closestTarget)
             {
                 uiController.UpdateEnemyData(closestTarget.getDistance(transform), npcBikes.Count);
@@ -117,7 +127,7 @@ public class bikeManager : MonoBehaviour
         }
          if(bikeSoundMG)
         {
-            bikeSoundMG.updateMotorVolume(Input.GetAxis("Vertical") + input.y);
+            bikeSoundMG.updateMotorVolume(bikeVehicle.getCurrentSpeed());
         }
         
 
@@ -164,6 +174,10 @@ public class bikeManager : MonoBehaviour
         else
         {
             bikeVehicle.UpdateInput(0,0);
+            if (zRotationHandler && zRotationHandler.transform.rotation!= defaultRotZRotation)
+            {
+                zRotationHandler.transform.rotation = Quaternion.Lerp(zRotationHandler.transform.rotation, defaultRotZRotation, 0.05f);
+            }
         }
     }
     float getSignedAngle(float angle)
@@ -187,10 +201,7 @@ public class bikeManager : MonoBehaviour
     public float rotz;
     [SerializeField] float gasDepletingSpeed=1f;
 
-    public void  UpdateGas(float addition)
-    {
-        remainingGas += addition;
-    }
+    
     public void CorrectRotationZ()
     {
         var currentRotation=transform.rotation;
@@ -207,7 +218,86 @@ public class bikeManager : MonoBehaviour
         }
  
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("should Dead "+ collision.transform.name);
+        if (collision.transform.CompareTag("DeadZone"))
+        {
+            Debug.Log("Dead");
+            if(!isResseting && fadeSphere && fadeSphere.material.HasProperty(fadeID))
+            {
+                StartCoroutine(Fade());
+            }
+        }
+        else
+        {
+            NPCBike npc;
+            if (collision.transform.CompareTag("NPC"))
+            {
+                Debug.Log("Crashed with NPC");
+                if (npc = collision.transform.getComponentInParent<NPCBike>())
+                {
+                    Debug.Log("Killing NPC");
+                    if (npcBikes.Contains(npc))
+                        npcBikes.Remove(npc);
+                    npc.DestroyBike(false);
+                }
+            }
+        }
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        NPCBike npc;
+        if (other.transform.CompareTag("NPC"))
+        {
+            if(npc=other.GetComponentInParent<NPCBike>())
+            {
+                if(npcBikes.Contains(npc))
+                npcBikes.Remove(npc);
+                npc.DestroyBike(false);
+            }
+        }
+    }
+    IEnumerator Fade()
+    {
+        
+        var delta = 1f;
+        FadeStart();
+        while (delta>0)
+        {
+            fadeSphere.material.SetFloat(fadeID, Mathf.Lerp(1, 0, delta));
+            yield return new WaitForEndOfFrame();
+            delta -= Time.deltaTime * fadeSpeed;
+        }
+        FadeMidPoint();
+        delta = 1f;
+        while (delta > 0)
+        {
+            fadeSphere.material.SetFloat(fadeID, Mathf.Lerp(0, 1, delta));
+            yield return new WaitForEndOfFrame();
+            delta -= Time.deltaTime * fadeSpeed;
+        }
+        FadeFinish();
+
+    }
+    public void FadeStart()
+    {
+        isResseting = true;
+        bikeVehicle.DisableMotor();
+    }
+    public void FadeMidPoint()
+    {
+        bikeVehicle.ResetBike();
+    }
+    public void FadeFinish()
+    {
+        bikeVehicle.EnableMotor();
+        isResseting = false;
+    }
+
+
 
 
 

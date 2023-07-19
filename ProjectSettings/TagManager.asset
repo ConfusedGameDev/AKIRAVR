@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Player_Hand
+  - DeadZone
+  - NPC
+  - Player
   layers:
   - Default
   - TransparentFX
@@ -12,7 +15,7 @@ TagManager:
   - NPC
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

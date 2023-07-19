@@ -41,7 +41,10 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentSpeed = 0;
+        if (SpeedLines.HasFloat(speedLinesRadiusID))
+            SpeedLines.SetFloat(speedLinesRadiusID, Mathf.Lerp(speedLinesRadius.x, speedLinesRadius.y, 0));
+
     }
 
     public void updateDiscSpeed(float newSpeed)
