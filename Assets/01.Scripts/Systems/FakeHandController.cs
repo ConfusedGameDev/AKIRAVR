@@ -18,16 +18,16 @@ public class FakeHandController : MonoBehaviour
     }
     private void OnEnable()
     {
-        originalPosition = transform.position;
-        originalRotation = transform.rotation;
+        originalPosition = transform.localPosition;
+        originalRotation = transform.localRotation;
         if (motionController.parent)
             motionController.automatic = true;
 
     }
     private void OnDisable()
     {
-        transform.position=originalPosition;
-        transform.rotation=originalRotation ;
+        transform.localPosition=originalPosition;
+        transform.localRotation=originalRotation ;
         motionController.automatic = false;
     }
     void Start()
