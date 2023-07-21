@@ -1,0 +1,5 @@
+NPC Speed:0.5
+NPC minDistTo Player:120
+Player Speed:28
+Player SteeringAngle:30
+Gas Depleting Speed:0.75
