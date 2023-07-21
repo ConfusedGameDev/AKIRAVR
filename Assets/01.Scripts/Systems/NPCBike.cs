@@ -10,6 +10,8 @@ public class NPCBike : MonoBehaviour
 
     public GameObject[] rewards;
     public GameObject deadVFX;
+    public float maxGas = 0.5f;
+    public float minDistToPlayer=120;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,5 +41,16 @@ public class NPCBike : MonoBehaviour
             Destroy(GameObject.Instantiate(deadVFX,transform.position,Quaternion.identity),3f);
             Destroy(gameObject);
         
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        if (collision.transform.CompareTag("DeadZone"))
+        {
+            Debug.Log("NPC Resseting" + collision.transform.name);
+            GetComponent<BikeVehicle>().ResetBike();
+        }
+        
+
     }
 }

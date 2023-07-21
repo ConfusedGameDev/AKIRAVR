@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 609073408783243370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0038, y: 0.0021, z: -0.0017}
-  m_LocalScale: {x: 3.2891, y: 3.2891, z: 3.2891}
+  m_LocalScale: {x: 0.90529186, y: 0.90529186, z: 0.90529186}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6684493855965393269}
@@ -4917,7 +4917,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061851112492119462}
-  m_LocalRotation: {x: -0.034849085, y: 0.17945403, z: 0.07069324, w: -0.98060405}
+  m_LocalRotation: {x: 0.034849815, y: -0.17945753, z: -0.07069503, w: 0.9806032}
   m_LocalPosition: {x: -878.75, y: 5.49, z: -284.83}
   m_LocalScale: {x: 65.888245, y: 65.888245, z: 65.888245}
   m_ConstrainProportionsScale: 0
@@ -5085,7 +5085,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1573097589405873432}
   onGrabAudio: {fileID: 8300000, guid: 107655bc22a6c42f59b837c7e634b0b2, type: 3}
   rotatingSpeed: 1
-  CoolOffTime: 10
+  CoolOffTime: 30
   mesh: {fileID: 8259643898008898567}
   col: {fileID: 2425454193312305078}
   typePickup: 0

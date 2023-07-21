@@ -25,7 +25,7 @@ public class WaypointController : SingletonComponent<WaypointController>
         int closestTargetIndex= 0;
         for (int i = 1; i < waypoints.Count; i++)
         {
-            var currentDist= Vector3.Distance(Agent.position, waypoints[1].position);
+            var currentDist= Vector3.Distance(Agent.position, waypoints[i].position);
             if(currentDist<minDist)
             {
                 closestTargetIndex = i;

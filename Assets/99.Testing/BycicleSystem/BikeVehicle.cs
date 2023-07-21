@@ -33,7 +33,12 @@ public class BikeVehicle : MonoBehaviour
 
     [Range(0.000001f, 1 )] [SerializeField] float leanSmoothing;
 
-	[SerializeField] WheelCollider frontWheel;
+    internal void setSpeed(float v)
+    {
+		motorforce = v;
+    }
+
+    [SerializeField] WheelCollider frontWheel;
 	[SerializeField] WheelCollider backWheel;
 
 	[SerializeField] Transform frontWheeltransform;
@@ -53,6 +58,7 @@ public class BikeVehicle : MonoBehaviour
 	public float gasSpeed = 0.005f;
     public float minTargetDistance = 20f;
     public Transform target;
+	public bikeManager playerBike;
     internal void applyPowerup(Pickup pickUpData, PickupType typePickup)
 	{
 		switch (typePickup)
@@ -123,6 +129,8 @@ public class BikeVehicle : MonoBehaviour
 		if(isAiControlled)
         {
 			nextTarget = WaypointController.Instance.getClosestWaypoint(transform);
+			if (transform.InverseTransformPoint(nextTarget.position).z <= 0)
+				nextTarget = WaypointController.Instance.getNextWaypoint(nextTarget);
         }
 	}
 
@@ -143,16 +151,26 @@ public class BikeVehicle : MonoBehaviour
 	//Get Horizontal(Handle) and vertical (gas) input
 	public void getAIInput()
     {
-		if (!target || Vector3.Distance(transform.position, target.position) > minTargetDistance) return;
+		if (!target || !playerBike  || !playerBike.isBikeOn)
+		{
+			return;
+			
+		}
         //horizontalInput = transform.InverseTransformPoint(nextTarget.position).x > transform.localPosition.x ? 1 : -1;  
         FakeSteering();
-        vereticallInput = 0.5f;
+        vereticallInput = Vector3.Distance(transform.position, target.position) <minTargetDistance? 0.5f:0.15f;
         currentDist = Vector3.Distance(transform.position, nextTarget.position);
         if (currentDist < minDist)
         {
             nextTarget = WaypointController.Instance.getNextWaypoint(nextTarget);
         }
         braking = Input.GetKey(KeyCode.Space);
+    }
+    private void OnDrawGizmos()
+    {
+		if (!nextTarget || !isAiControlled) return;
+		Gizmos.color = Color.red;
+		Gizmos.DrawLine(transform.position, nextTarget.position);
     }
 
     private void FakeSteering()

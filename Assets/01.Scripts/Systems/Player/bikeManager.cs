@@ -9,11 +9,7 @@ public class bikeManager : MonoBehaviour
 {
     //TODO
     /*
-     * Polish Rubber band System
-     * ADd game over
-     * add game win
-     * add tutorial
-     * add Powerups
+      
      */
 
     public List<NPCBike> npcBikes=new List<NPCBike>();
@@ -26,6 +22,28 @@ public class bikeManager : MonoBehaviour
     public Transform cameraController;
     public Transform rotZController;
     public Transform leftHandT, rightHandT, bikeroationController;
+
+    internal void setMaxSpeed(float v)
+    {
+        if(bikeVehicle && v>0)
+        {
+            bikeVehicle.setSpeed(v);
+        }
+    }
+
+    internal void setGasSpeed(float v)
+    {
+        if (v != 0)
+            gasDepletingSpeed = v;
+        
+    }
+
+    internal void setSteeringAngle(float v)
+    {
+        if(v!=0)
+        steeringRange = v;
+    }
+
     public float handAngle;
     public UIController uiController;
     public float maxSpeed=40f;
@@ -57,7 +75,9 @@ public class bikeManager : MonoBehaviour
     public float fadeSpeed = 1f;
     bool isResseting;
     Quaternion defaultRotZRotation;
-   
+
+    public GameObject winScreen,looseScreen;
+    bool gameOver;
     void Start()
     {
         if (inputMap != null)
@@ -86,7 +106,13 @@ public class bikeManager : MonoBehaviour
     }
     public NPCBike getClosestEnemy()
     {
-        if (npcBikes.Count == 0) return null;
+        if (npcBikes.Count == 0)
+        {
+            gameOver = true;
+            StartCoroutine(Fade(true, true));
+
+            return null;
+        }
         if (npcBikes.Count == 1) return npcBikes[0];
         var minDist = Vector3.Distance(transform.position, npcBikes[0].transform.position);
         int closestTargetIndex = 0;
@@ -107,11 +133,19 @@ public class bikeManager : MonoBehaviour
     //Run Logic On the Fixed Update cause it is a Physics Based Vehicle
     private void FixedUpdate()
     {
-        if (!isBikeOn)
+        if (!isBikeOn || bikeVehicle.remainingGas<=0 || gameOver)
             return;
 
-        if(!bikeVehicle.isAiControlled)
-        bikeVehicle.remainingGas -= Time.deltaTime * gasDepletingSpeed;
+        if (!bikeVehicle.isAiControlled)
+        {
+            bikeVehicle.remainingGas -= Time.deltaTime * gasDepletingSpeed;
+            if (bikeVehicle.remainingGas <= 0)
+            {
+                StartCoroutine(Fade(true, false));
+                return;
+            }
+        }
+
         closestTarget = getClosestEnemy();
         
         UpdateEngine();
@@ -228,7 +262,7 @@ public class bikeManager : MonoBehaviour
             Debug.Log("Dead");
             if(!isResseting && fadeSphere && fadeSphere.material.HasProperty(fadeID))
             {
-                StartCoroutine(Fade());
+                StartCoroutine(Fade(false,false));
             }
         }
         else
@@ -243,6 +277,11 @@ public class bikeManager : MonoBehaviour
                     if (npcBikes.Contains(npc))
                         npcBikes.Remove(npc);
                     npc.DestroyBike(false);
+                    if (npcBikes.Count<=0)
+                    {
+                        StartCoroutine(Fade(true,true));
+
+                    }
                 }
             }
         }
@@ -261,9 +300,20 @@ public class bikeManager : MonoBehaviour
             }
         }
     }
-    IEnumerator Fade()
+    IEnumerator Fade(bool GameOver=false,bool win =false)
     {
-        
+        if(GameOver)
+        {
+            if(win)
+            {
+                winScreen.SetActive(true);
+            }
+            else
+            {
+                looseScreen.SetActive(true);
+            }
+            fadeSpeed *= 0.15f;
+        }
         var delta = 1f;
         FadeStart();
         while (delta>0)
@@ -272,7 +322,9 @@ public class bikeManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
             delta -= Time.deltaTime * fadeSpeed;
         }
-        FadeMidPoint();
+        if(GameOver)
+        yield return new WaitForSeconds(1f);
+        FadeMidPoint(GameOver);
         delta = 1f;
         while (delta > 0)
         {
@@ -288,8 +340,12 @@ public class bikeManager : MonoBehaviour
         isResseting = true;
         bikeVehicle.DisableMotor();
     }
-    public void FadeMidPoint()
+    public void FadeMidPoint(bool resetGame=false)
     {
+        if(resetGame)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
         bikeVehicle.ResetBike();
     }
     public void FadeFinish()

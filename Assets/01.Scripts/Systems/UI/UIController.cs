@@ -79,7 +79,7 @@ public class UIController : MonoBehaviour
     void UpdateGasLine()
     {
         if (!GasMeter) return;
-        GasMeter.End = new Vector3( maxLineGas * (currentGas / 100f), GasMeter.End.y,GasMeter.End.z);
+        GasMeter.End = new Vector3(Mathf.Lerp(GasMeter.Start.x, maxLineGas , (currentGas / 100f)), GasMeter.End.y,GasMeter.End.z);
         GasMeter.Color = Color.Lerp(Color.red, Color.green, currentGas / 100f);
 
     }

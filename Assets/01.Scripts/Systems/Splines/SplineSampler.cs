@@ -40,7 +40,7 @@ public class SplineSampler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         
+        if (Application.isPlaying) return;
         samples.Clear();
 
         if (!splineContainer) return;
